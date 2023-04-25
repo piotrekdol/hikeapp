@@ -1,0 +1,46 @@
+{
+  "name": "hikeapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --mode=none",
+    "start:dev": "webpack-dev-server --mode=development",
+    "build:prod": "webpack --mode=production",
+    "build:dev": "webpack --mode=development",
+    "start": "concurrently \"npm run start:webpack\" \"npm run start:express\"",
+    "start:webpack": "webpack serve --mode development --port 9000",
+    "start:express": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "html-loader": "^4.2.0",
+    "http-proxy-middleware": "^2.0.6",
+    "mongoose": "^7.0.3",
+    "webpack": "^5.66.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.16.7",
+    "@babel/preset-env": "^7.16.8",
+    "autoprefixer": "^10.4.2",
+    "babel-loader": "^8.2.3",
+    "concurrently": "^8.0.1",
+    "css-loader": "^6.7.3",
+    "html-webpack-plugin": "^5.5.0",
+    "mini-css-extract-plugin": "^2.4.5",
+    "postcss": "^8.4.5",
+    "postcss-loader": "^6.2.1",
+    "sass": "^1.57.1",
+    "sass-loader": "^12.4.0",
+    "style-loader": "^3.3.1",
+    "webpack-cli": "^4.10.0",
+    "webpack-dev-server": "^4.8.0"
+  }
+}

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Register Your Hike</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,200,0,200"
+    />
+  </head>
+  <body>
+    <header class="firstheader">
+      <div class="maincontainer">
+        <div id="weatherwidget">
+          <div>Check your weather</div>
+          <button class="find-location">
+            <span class="material-symbols-outlined iconstyle">
+              location_on
+            </span>
+          </button>
+          <div id="weatherwarsaw"></div>
+          <div id="weather"></div>
+          <p class="status"></p>
+          <div class="rightbox" style="margin-left: auto"></div>
+        </div>
+        <div class="div2"></div>
+        <div class="div3"></div>
+        <div class="div4">
+          <h1>Register your <span>hike</span></h1>
+          <h2>and join to community of wanderers</h2>
+        </div>
+        <div class="div5"></div>
+      </div>
+    </header>
+
+    <main class="mainarea">
+      <div class="container">
+        <form id="formFirstStep" method="post" action="/step2"> 
+          <!-- endpoint - klik w button przekierowuje do podstrony step2 - serwer express 3000 -->
+          <div>  
+            <label for="country">Country:</label>
+            <select id="country" onchange="updateTerrainType()">
+              <option value="" selected disabled>Select</option>
+              <option value="France">France</option>
+              <option value="Italy">Italy</option>
+              <option value="Romania">Romania</option>
+            </select>
+          </div>  
+          
+          <div>
+            <label for="terrainType">Terrain type:</label>
+            <select id="terrainType" onchange="updateRegion()">
+              <option value="" selected disabled>Select</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="region">Region:</label>
+            <select id="region">
+              <option value="" selected disabled>Select</option>
+            </select>
+          </div>  
+
+          <button class="go" onclick="submitForm()"><span>Next</span></button>
+        </form>
+      </div>
+    </main>
+
+    <footer>
+      <div class="container">
+        <p>
+          Register your Hike<span>•</span>Piotr Dolata<span>•</span>WSB 2023
+        </p>
+      </div>
+    </footer>
+
+    <script src="config.js"></script>  
+    <script>
+      // Kraje, tereny wyżyny i niziny oraz regiony jako jeden obiekt
+      const countries = {
+        France: {
+          Mountains: ['Alps', 'Vosges', 'Pyrenees'],
+          Lowlands: ['Massif Central', 'Normandy'],
+        },
+        Italy: {
+          Mountains: ['Apennines', 'Alps'],
+          Lowlands: ['Sicily', 'Padania']
+        },
+        Romania: {
+          Mountains: ['Maramureș', 'Apuseni'],
+          Lowlands: ['Transilvania', 'Danube Delta']
+        },        
+      };
+      
+      // Funkcja do aktualizowania listy rozwijanej z typami terenu - Mountains i Lowlands
+      function updateTerrainType() {
+        const country = document.getElementById("country").value;
+        const terrainTypeSelect = document.getElementById("terrainType");
+         terrainTypeSelect.innerHTML = '<option value="" selected disabled>Select</option>';
+        
+        if (country !== '') {
+          for (const terrainType in countries[country]) {
+            const option = document.createElement("option");
+            option.value = terrainType;
+            option.text = terrainType;
+            terrainTypeSelect.appendChild(option);
+          }
+        }
+        
+        updateRegion();
+      }
+      
+      // Funkcja do aktualizowania listy rozwijanej z regionami
+      function updateRegion() {
+        const country = document.getElementById("country").value;
+        const terrainType = document.getElementById("terrainType").value;
+        const regionSelect = document.getElementById("region");
+         regionSelect.innerHTML = '<option value="" selected disabled>Select</option>';
+        
+        if (terrainType !== '') {
+          for (const region of countries[country][terrainType]) {
+            const option = document.createElement("option");
+            option.value = region;
+            option.text = region;
+            regionSelect.appendChild(option);
+          }
+        }
+      }
+    </script>
+    
+    
+    <script>
+      // Funkcja do zapisywania danych formularza w pamięci przeglądarki i przechodzenia do drugiej strony
+      function submitForm() {
+        // Pobranie danych formularza
+        const country = document.getElementById("country").value;     
+        const terrainType = document.getElementById("terrainType").value;
+        const region = document.getElementById("region").value;
+
+        // Zapisanie danych formularza w localStorage
+        localStorage.setItem("country", country);   
+        localStorage.setItem("terrainType", terrainType);
+        localStorage.setItem("region", region);
+
+        // Przekierowanie do drugiej strony
+        window.location.href = "step2.html";
+      }
+    </script>
+
+  </body>
+</html>

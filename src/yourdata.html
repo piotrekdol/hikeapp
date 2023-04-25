@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Formularz - podziękowanie</h2>
+    <p>Dziękujemy za wypełnienie formularza!</p>
+
+    <div id="pokazdane"></div>
+
+    <p>tak dla sportu wypełnij jeszcze ten i zapisz dane w mongo!!</p>
+
+    <form method="post" action="/api/thanks">
+        <input name="title">
+        <input name="author">
+        <input name="pages">
+        <input name="generes">
+        <input name="rating">
+        <button>add to mongo</button>
+    </form>
+
+    
+    <script>
+      // Pobranie danych formularza z localStorage i wyświetlenie ich na stronie
+        const firstName = localStorage.getItem("firstName");
+        const lastName = localStorage.getItem("lastName");
+        const email = localStorage.getItem("email");
+        const phoneNumber = localStorage.getItem("phoneNumber");
+      
+        let name = "Twoje dane:\n" +
+                    "Imię: " + firstName + "\n" +
+                    "Nazwisko: " + lastName + "\n" +
+                    "Adres e-mail: " + email + "\n" +
+                    "Numer telefonu: " + phoneNumber;
+                    
+        document.getElementById("pokazdane").innerHTML = name;
+
+      // Wyczyszczenie danych formularza z localStorage
+        localStorage.removeItem("firstName");
+        localStorage.removeItem("lastName");
+        localStorage.removeItem("email");
+        localStorage.removeItem("phoneNumber");
+    </script>
+</body>
+</html>
