@@ -1,0 +1,9 @@
+[[redirects]]
+  from = "/"
+  to = "/step2"
+  status = 200
+
+[[redirects]]
+  from = "/step2"
+  to = "/thankyou"
+  status = 200
