@@ -38,14 +38,11 @@
             <h2 class="thankyou">Thank you <span class="nameofuser"></span></h2>
             <p>Welcome to wanderers community!</p>
           </div>
-          <div class="thankyouimg">
-          </div>
-        </div>  
+          <div class="thankyouimg"></div>
+        </div>
       </div>
 
       <div class="container">
-        <!-- <button class="go" style="margin-left: auto" id="submit-button"><span>Finish</span></button> -->
-
         <div id="hikerslist"></div>
       </div>
       <div class="hikerslist__item--numberofkilometers"></div>
@@ -68,7 +65,7 @@
     </script>
 
     <script>
-      fetch("/dane")
+      fetch("/dane") //pewnie da się to zrobić lepiej tylko nie wiem jak
         .then((response) => response.json())
         .then((data) => {
           const container = document.getElementById("hikerslist");
@@ -76,12 +73,8 @@
           reversedDane.forEach((item) => {
             const element = document.createElement("div");
             element.classList.add("hikerslist__item");
-
-            // const element2 = document.querySelector('.hikerslist__item--numberofkilometers');
-
-
-            element.innerHTML = 
-                                `<div class="hikerslist__item__left">
+            //tworzę div w ktorym wyswietlam dane pobrane z bazy mongo
+            element.innerHTML = `<div class="hikerslist__item__left">
                                     <div class="${item.animal}"></div>
                                  </div>
             
@@ -95,11 +88,8 @@
                                  </div>`;
 
             container.appendChild(element);
-            // container.appendChild(element2);
           });
         });
     </script>
   </body>
 </html>
-
-

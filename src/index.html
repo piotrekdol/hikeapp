@@ -36,9 +36,9 @@
 
     <main class="mainarea">
       <div class="container">
-        <form id="formFirstStep" method="post" action="/step2"> 
+        <form id="formFirstStep" method="post" action="/step2">
           <!-- endpoint - klik w button przekierowuje do podstrony step2 - serwer express 3000 -->
-          <div class="formFirstStep__inputs">  
+          <div class="formFirstStep__inputs">
             <label for="country">Country:</label>
             <select id="country" onchange="updateTerrainType()">
               <option value="" selected disabled>Select</option>
@@ -46,23 +46,25 @@
               <option value="Italy">Italy</option>
               <option value="Romania">Romania</option>
             </select>
-          </div>  
-          
-          <div class="formFirstStep__inputs">  
+          </div>
+
+          <div class="formFirstStep__inputs">
             <label for="terrainType">Terrain&nbsp;type:</label>
             <select id="terrainType" onchange="updateRegion()">
               <option value="" selected disabled>Select</option>
             </select>
           </div>
 
-          <div class="formFirstStep__inputs">  
+          <div class="formFirstStep__inputs">
             <label for="region">Region:</label>
             <select id="region">
               <option value="" selected disabled>Select</option>
             </select>
-          </div>  
+          </div>
 
-          <button type="submit" class="go" onclick="submitForm()"><span>Next</span></button>
+          <button type="submit" class="go" onclick="submitForm()">
+            <span>Next</span>
+          </button>
         </form>
       </div>
     </main>
@@ -75,31 +77,31 @@
       </div>
     </footer>
 
-
     <script>
       // Kraje, tereny wyżyny i niziny oraz regiony jako jeden obiekt
       const countries = {
         France: {
-          Mountains: ['Alps', 'Vosges', 'Pyrenees'],
-          Lowlands: ['Massif Central', 'Normandy'],
+          Mountains: ["Alps", "Vosges", "Pyrenees"],
+          Lowlands: ["Massif Central", "Normandy"],
         },
         Italy: {
-          Mountains: ['Apennines', 'Alps'],
-          Lowlands: ['Sicily', 'Padania']
+          Mountains: ["Apennines", "Alps"],
+          Lowlands: ["Sicily", "Padania"],
         },
         Romania: {
-          Mountains: ['Maramureș', 'Apuseni'],
-          Lowlands: ['Transilvania', 'Danube Delta']
-        },        
+          Mountains: ["Maramureș", "Apuseni"],
+          Lowlands: ["Transilvania", "Danube Delta"],
+        },
       };
-      
+
       // Funkcja do aktualizowania listy rozwijanej z typami terenu - Mountains i Lowlands
       function updateTerrainType() {
         const country = document.getElementById("country").value;
         const terrainTypeSelect = document.getElementById("terrainType");
-         terrainTypeSelect.innerHTML = '<option value="" selected disabled>Select</option>';
-        
-        if (country !== '') {
+        terrainTypeSelect.innerHTML =
+          '<option value="" selected disabled>Select</option>';
+
+        if (country !== "") {
           for (const terrainType in countries[country]) {
             const option = document.createElement("option");
             option.value = terrainType;
@@ -107,18 +109,19 @@
             terrainTypeSelect.appendChild(option);
           }
         }
-        
+
         updateRegion();
       }
-      
+
       // Funkcja do aktualizowania listy rozwijanej z regionami
       function updateRegion() {
         const country = document.getElementById("country").value;
         const terrainType = document.getElementById("terrainType").value;
         const regionSelect = document.getElementById("region");
-         regionSelect.innerHTML = '<option value="" selected disabled>Select</option>';
-        
-        if (terrainType !== '') {
+        regionSelect.innerHTML =
+          '<option value="" selected disabled>Select</option>';
+
+        if (terrainType !== "") {
           for (const region of countries[country][terrainType]) {
             const option = document.createElement("option");
             option.value = region;
@@ -128,62 +131,47 @@
         }
       }
 
-
-
       // walidacja - działa tzn nie puszcza dalej, ale nie pojawiają się alerty
-const valid = document.getElementById("formFirstStep");
+      const valid = document.getElementById("formFirstStep");
 
-valid.addEventListener("submit", function(event) {
-  const countryInput = document.getElementById("country");
-  const terrainTypeInput = document.getElementById("terrainType");
-  const regionInput = document.getElementById("region");    
+      valid.addEventListener("submit", function (event) {
+        const countryInput = document.getElementById("country");
+        const terrainTypeInput = document.getElementById("terrainType");
+        const regionInput = document.getElementById("region");
 
-if (countryInput.value === "") {
-  alert("Please choose your destination country");
-  countryInput.style.borderColor = "red";
-  event.preventDefault();
-}
+        if (countryInput.value === "") {
+          alert("Please choose your destination country");
+          countryInput.style.borderColor = "red";
+          event.preventDefault();
+        }
 
-if (terrainTypeInput.value === "") {
-  alert("Please choose terrain type");
-  terrainTypeInput.style.borderColor = "red";
-  event.preventDefault();
-}
+        if (terrainTypeInput.value === "") {
+          alert("Please choose terrain type");
+          terrainTypeInput.style.borderColor = "red";
+          event.preventDefault();
+        }
 
-if (regionInput.value === "") {
-  alert("Choose region");
-  regionInput.style.borderColor = "red";
-  event.preventDefault();
-}
-});
-
-
-
+        if (regionInput.value === "") {
+          alert("Choose region");
+          regionInput.style.borderColor = "red";
+          event.preventDefault();
+        }
+      });
     </script>
 
-<!-- walidacja formularza -->
-<script>
+    <!-- walidacja formularza -->
+    <script></script>
 
-
-
-
-
-
-
-
-</script>
-    
-    
     <script>
       // Funkcja do zapisywania danych formularza w pamięci przeglądarki i przechodzenia do drugiej strony
       function submitForm() {
         // Pobranie danych formularza
-        const country = document.getElementById("country").value;     
+        const country = document.getElementById("country").value;
         const terrainType = document.getElementById("terrainType").value;
         const region = document.getElementById("region").value;
 
         // Zapisanie danych formularza w localStorage
-        localStorage.setItem("country", country);   
+        localStorage.setItem("country", country);
         localStorage.setItem("terrainType", terrainType);
         localStorage.setItem("region", region);
 
@@ -191,6 +179,5 @@ if (regionInput.value === "") {
         window.location.href = "step2.html";
       }
     </script>
-
   </body>
 </html>

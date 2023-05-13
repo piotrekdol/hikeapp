@@ -65,14 +65,12 @@ app.post('/step2', function(req, res) {
     res.sendFile(__dirname + '/src/step2.html');
   });
 
-
-
 // app.post('/api/thankyou', function(req, res) {
 //     res.sendFile(__dirname + '/src/thankyou.html');
 //   });  
 
 
-//port na jakim działa serwer  
+//port na jakim działa serwer express 
 app.listen(3000, function() {
     console.log('server is run on port 3000')
 })
