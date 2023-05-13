@@ -30,19 +30,19 @@ const notesSchema = {
 
 const Note = mongoose.model('Hiker', notesSchema); //do jakiej kolekcji w bazie mają zapisywać się dane
 
-// definicja endpointu /dane
-app.get('/dane', (req, res) => {
-  Note.find()
-  .sort({createdAt: -1})
-    .then((dane) => {
-      res.json(dane);
-      // res.sendFile(__dirname + '/src/result.html');
-    })
-    .catch((err) => {
-      console.error(err);
-      res.status(500).json({ message: 'Internal server error' });
-    });
-});
+// // definicja endpointu /dane
+// app.get('/dane', (req, res) => {
+//   Note.find()
+//   .sort({createdAt: -1})
+//     .then((dane) => {
+//       res.json(dane);
+//       // res.sendFile(__dirname + '/src/result.html');
+//     })
+//     .catch((err) => {
+//       console.error(err);
+//       res.status(500).json({ message: 'Internal server error' });
+//     });
+// });
 
 
 //endpointy - definuiją na jakie podstrony mają odsłyłać przyciski w formularzu
