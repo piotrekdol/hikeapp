@@ -29,7 +29,7 @@ const options = {
     const outputDiv = document.getElementById("weatherwarsaw");
     outputDiv.innerHTML = `<div class="city">${namecity}</div>,&nbsp;<div>${namecountry}</div>&nbsp;<div id="temp">
     <span class="material-symbols-outlined font-med">device_thermostat</span>${temp_value}°C</div>&nbsp;<div>${icon_description}</div>&nbsp;
-    <div class="iconcondition"><img src="http:${weather_icon}" /></div><div>${date_time}</div>`; // CO MA SIĘ WYŚWIETLAĆ NA STRONIE
+    <div class="iconcondition"><img src="http:${weather_icon}" /></div><div class="datetime">${date_time}</div>`; // CO MA SIĘ WYŚWIETLAĆ NA STRONIE
     if (temp_value >= 20) {
       //INSTRUKCJA WARUNKOWA JAK MA ZMIENIAĆ SIĘ KOLOR TEKSTU W ZALEŻNOŚCI OD WYSOKOŚCI TEMPERATURY
       let v = document.getElementById("temp");
@@ -46,7 +46,7 @@ const options = {
 
 
 /* PRZYCISK ABY POBRAĆ LOKALIZACJĘ UŻYTKOWNIKA I WYŚWIETLIĆ W MIEJSCE DEFAULTOWEJ WARSZAWY */
-const findMyState = () => {
+function findMyState() {
   const status = document.querySelector(".status");
   const success = (position) => {
     console.log(position);
@@ -57,9 +57,9 @@ const findMyState = () => {
 
     fetch(
       "https://weatherapi-com.p.rapidapi.com/forecast.json?q=" +
-        latitude +
-        "," +
-        longitude,
+      latitude +
+      "," +
+      longitude,
       options
     )
       .then((resp) => resp.json())
@@ -69,7 +69,7 @@ const findMyState = () => {
         const datetime = Object.keys(data.location)[7];
         const temperature = Object.keys(data.current)[2]; // pobieramy klucz trzeciego elementu Z CURRENT
         const iconDesc = Object.keys(data.current.condition)[0];
-        const icon = Object.keys(data.current.condition)[1];         
+        const icon = Object.keys(data.current.condition)[1];
         const namecity = data.location[city]; // TWORZYMY ZMIENNĄ NAMECITY, KTÓRA WYŚWIETLI NAZWĘ MIASTA NA STRONIE
         const namecountry = data.location[country]; //TWORZYMY ZMIENNĄ NAMECOUNRTY, KTÓRA WYŚWIETLI NAZWĘ PAŃSTWA NA STRONIE
         const date_time = data.location[datetime]; //TWORZYMY ZMIENNĄ NAMECOUNRTY, KTÓRA WYŚWIETLI NAZWĘ PAŃSTWA NA STRONIE        
@@ -89,7 +89,7 @@ const findMyState = () => {
           w.className += "addorange";
         } else {
           let ww = document.getElementById("temp2");
-          ww.className += "addblue";      
+          ww.className += "addblue";
         }
       })
       .catch((error) => console.error(error));
@@ -98,7 +98,7 @@ const findMyState = () => {
     status.textContent = "Unable to retrieve your location";
   };
   navigator.geolocation.getCurrentPosition(success, error);
-};
+}
 
 /* DEFAULTOWO MA BYĆ POGODA DLA WARSZAWY, PO KLIKNIĘCIU PRZYCISK 
 DO LOKALIZACJI W MIEJSCE WARSZAWY PODSTAWIA SIĘ LOKALIZACJA UŻYTKOWNIKA */

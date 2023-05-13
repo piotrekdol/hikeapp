@@ -14,7 +14,7 @@
     <header class="firstheader">
       <div class="maincontainer">
         <div id="weatherwidget">
-          <div>Check your weather</div>
+          <div class="checkweather">Check your weather</div>
           <button class="find-location">
             <span class="material-symbols-outlined iconstyle">
               location_on
@@ -23,7 +23,6 @@
           <div id="weatherwarsaw"></div>
           <div id="weather"></div>
           <p class="status"></p>
-          <div class="rightbox" style="margin-left: auto"></div>
         </div>
         <div class="div2"></div>
         <div class="div3"></div>
@@ -39,7 +38,7 @@
       <div class="container">
         <form id="formFirstStep" method="post" action="/step2"> 
           <!-- endpoint - klik w button przekierowuje do podstrony step2 - serwer express 3000 -->
-          <div>  
+          <div class="formFirstStep__inputs">  
             <label for="country">Country:</label>
             <select id="country" onchange="updateTerrainType()">
               <option value="" selected disabled>Select</option>
@@ -49,21 +48,21 @@
             </select>
           </div>  
           
-          <div>
-            <label for="terrainType">Terrain type:</label>
+          <div class="formFirstStep__inputs">  
+            <label for="terrainType">Terrain&nbsp;type:</label>
             <select id="terrainType" onchange="updateRegion()">
               <option value="" selected disabled>Select</option>
             </select>
           </div>
 
-          <div>
+          <div class="formFirstStep__inputs">  
             <label for="region">Region:</label>
             <select id="region">
               <option value="" selected disabled>Select</option>
             </select>
           </div>  
 
-          <button class="go" onclick="submitForm()"><span>Next</span></button>
+          <button type="submit" class="go" onclick="submitForm()"><span>Next</span></button>
         </form>
       </div>
     </main>
@@ -76,7 +75,7 @@
       </div>
     </footer>
 
-    <script src="config.js"></script>  
+
     <script>
       // Kraje, tereny wyżyny i niziny oraz regiony jako jeden obiekt
       const countries = {
@@ -128,7 +127,51 @@
           }
         }
       }
+
+
+
+      // walidacja - działa tzn nie puszcza dalej, ale nie pojawiają się alerty
+const valid = document.getElementById("formFirstStep");
+
+valid.addEventListener("submit", function(event) {
+  const countryInput = document.getElementById("country");
+  const terrainTypeInput = document.getElementById("terrainType");
+  const regionInput = document.getElementById("region");    
+
+if (countryInput.value === "") {
+  alert("Please choose your destination country");
+  countryInput.style.borderColor = "red";
+  event.preventDefault();
+}
+
+if (terrainTypeInput.value === "") {
+  alert("Please choose terrain type");
+  terrainTypeInput.style.borderColor = "red";
+  event.preventDefault();
+}
+
+if (regionInput.value === "") {
+  alert("Choose region");
+  regionInput.style.borderColor = "red";
+  event.preventDefault();
+}
+});
+
+
+
     </script>
+
+<!-- walidacja formularza -->
+<script>
+
+
+
+
+
+
+
+
+</script>
     
     
     <script>

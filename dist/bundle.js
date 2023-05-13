@@ -27,6 +27,7 @@ __webpack_require__.r(__webpack_exports__);
 /* SPRAWDZANIE LOKALIZACJI UŻYTKOWNIKA */
 /* KLUCZ API POGODA Z RAPIDAPI */
 
+var url = 'https://weatherapi-com.p.rapidapi.com/current.json?q=53.1%2C-0.13';
 var options = {
   method: "GET",
   headers: {
@@ -52,7 +53,7 @@ fetch("https://weatherapi-com.p.rapidapi.com/forecast.json?q=Warsaw", options).t
   var icon_description = data.current.condition[iconDesc]; // TWORZYMY ZMIENNĄ WEATHER_ICON, KTÓRA WYŚWIETLI IKONĘ NA STRONIE        
   var weather_icon = data.current.condition[icon]; // TWORZYMY ZMIENNĄ WEATHER_ICON, KTÓRA WYŚWIETLI IKONĘ NA STRONIE
   var outputDiv = document.getElementById("weatherwarsaw");
-  outputDiv.innerHTML = "<div class=\"city\">".concat(namecity, "</div>,&nbsp;<div>").concat(namecountry, "</div>&nbsp;<div id=\"temp\">\n    <span class=\"material-symbols-outlined font-med\">device_thermostat</span>").concat(temp_value, "\xB0C</div>&nbsp;<div>").concat(icon_description, "</div>&nbsp;\n    <div class=\"iconcondition\"><img src=\"http:").concat(weather_icon, "\" /></div><div>").concat(date_time, "</div>"); // CO MA SIĘ WYŚWIETLAĆ NA STRONIE
+  outputDiv.innerHTML = "<div class=\"city\">".concat(namecity, "</div>,&nbsp;<div>").concat(namecountry, "</div>&nbsp;<div id=\"temp\">\n    <span class=\"material-symbols-outlined font-med\">device_thermostat</span>").concat(temp_value, "\xB0C</div>&nbsp;<div>").concat(icon_description, "</div>&nbsp;\n    <div class=\"iconcondition\"><img src=\"http:").concat(weather_icon, "\" /></div><div class=\"datetime\">").concat(date_time, "</div>"); // CO MA SIĘ WYŚWIETLAĆ NA STRONIE
   if (temp_value >= 20) {
     //INSTRUKCJA WARUNKOWA JAK MA ZMIENIAĆ SIĘ KOLOR TEKSTU W ZALEŻNOŚCI OD WYSOKOŚCI TEMPERATURY
     var v = document.getElementById("temp");
@@ -69,7 +70,7 @@ fetch("https://weatherapi-com.p.rapidapi.com/forecast.json?q=Warsaw", options).t
 });
 
 /* PRZYCISK ABY POBRAĆ LOKALIZACJĘ UŻYTKOWNIKA I WYŚWIETLIĆ W MIEJSCE DEFAULTOWEJ WARSZAWY */
-var findMyState = function findMyState() {
+function findMyState() {
   var status = document.querySelector(".status");
   var success = function success(position) {
     console.log(position);
@@ -113,7 +114,7 @@ var findMyState = function findMyState() {
     status.textContent = "Unable to retrieve your location";
   };
   navigator.geolocation.getCurrentPosition(success, error);
-};
+}
 
 /* DEFAULTOWO MA BYĆ POGODA DLA WARSZAWY, PO KLIKNIĘCIU PRZYCISK 
 DO LOKALIZACJI W MIEJSCE WARSZAWY PODSTAWIA SIĘ LOKALIZACJA UŻYTKOWNIKA */

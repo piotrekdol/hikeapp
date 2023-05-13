@@ -58,7 +58,6 @@ app.post('/thankyou', function(req, res) {
         animal: req.body.animal
     });
     newNote.save();
-    // res.redirect('/');
     res.sendFile(__dirname + '/src/thankyou.html');
 })
 
