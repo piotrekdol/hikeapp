@@ -1,3 +1,6 @@
 [[redirects]]
   from = "/"
   to = "/step2"
+  status = 302
+  force = true
+  conditions = {FormButton = "submit"}
