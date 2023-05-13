@@ -143,7 +143,7 @@
             </div>
           </div>
 
-          <button class="go" style="margin-left: auto" onclick="submitForm()">
+          <button class="go" type="submit" style="margin-left: auto" onclick="submitForm()">
             <span>Finish</span>
           </button>
         </form>
@@ -161,69 +161,6 @@
 
     <script>
 
-
-const valid = document.getElementById("formSecondStep");
-
-valid.addEventListener("submit", function (event) {
-  const startTripInput = document.getElementById("startTrip");
-  const numberOfKilometersInput = document.getElementById("numberOfKilometers");
-  const accomodationInput = document.getElementById("accomodation");
-  const numberOfPersonsInput = document.getElementById("numberOfPersons");
-  const nameInput = document.getElementById("name");
-  const emailInput = document.getElementById("email");
-  const colorInput = document.getElementById("color");
-  const animalInput = document.getElementById("animal");
-  
-
-  if (startTripInput.value === "") {
-    alert("Please choose your destination country");
-    startTripInput.style.borderColor = "red";
-    event.preventDefault();
-  }
-
-  if (numberOfKilometersInput.value === "") {
-    alert("Please choose terrain type");
-    numberOfKilometersInput.style.borderColor = "red";
-    event.preventDefault();
-  }
-
-  if (accomodationInput.value === "") {
-    alert("Please choose your accomodation");
-    accomodationInput.style.borderColor = "red";
-    event.preventDefault();
-  }
-
-  if (numberOfPersonsInput.value === "") {
-    alert("Please choose number of persons");
-    numberOfPersonsInput.style.borderColor = "red";
-    event.preventDefault();
-  }
-
-  if (nameInput.value === "") {
-    alert("Please type your name");
-    nameInput.style.borderColor = "red";
-    event.preventDefault();
-  }
-
-  if (emailInput.value === "") {
-    alert("Please type your email addres");
-    emailInput.style.borderColor = "red";
-    event.preventDefault();
-  }
-
-  if (colorInput.value === "") {
-    alert("Choose your color");
-    colorInput.style.borderColor = "red";
-    event.preventDefault();
-  }
-
-  if (animalInput.value === "") {
-    alert("Choose your animal");
-    animalInput.style.borderColor = "red";
-    event.preventDefault();
-  }
-});
-
       //pobieram dane z local storage
       const country = localStorage.getItem("country");
       const terrainType = localStorage.getItem("terrainType");
@@ -235,36 +172,48 @@ valid.addEventListener("submit", function (event) {
       document.getElementById("region").innerHTML = region;
 
       // Funkcja do zapisywania danych formularza w pamięci przeglądarki
+
       function submitForm() {
-        // Pobranie danych formularza
-        const startTrip = document.getElementById("startTrip").value;
-        const numberOfKilometers =
-          document.getElementById("numberOfKilometers").value;
-        const numberOfPersons =
-          document.getElementById("numberOfPersons").value;
-        const accomodation = document.getElementById("accomodation").value;
+  const startTrip = document.getElementById("startTrip").value;
+  const numberOfKilometers = document.getElementById("numberOfKilometers").value;
+  const numberOfPersons = document.getElementById("numberOfPersons").value;
+  const accomodation = document.getElementById("accomodation").value;
 
-        const name = document.getElementById("name").value;
-        const email = document.getElementById("email").value;
-        const color = document.getElementById("color").value;
-        const animal = document.getElementById("animal").value;
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const color = document.getElementById("color").value;
+  const animal = document.getElementById("animal").value;
 
-        // Zapisanie danych formularza w localStorage
-        localStorage.setItem("startTrip", startTrip);
-        localStorage.setItem("numberOfKilometers", numberOfKilometers);
-        localStorage.setItem("numberOfPersons", numberOfPersons);
-        localStorage.setItem("accomodation", accomodation);
+  // Sprawdzanie, czy wszystkie pola są wypełnione
+  if (
+    !startTrip ||
+    !numberOfKilometers ||
+    !numberOfPersons ||
+    !accomodation ||
+    !name ||
+    !email ||
+    !color ||
+    !animal
+  ) {
+    alert("Proszę wypełnić wszystkie pola formularza.");
+    return; // Przerwanie dalszego wykonywania funkcji
+  }
 
-        localStorage.setItem("name", name);
-        localStorage.setItem("email", email);
-        localStorage.setItem("color", color);
-        localStorage.setItem("animal", animal);
+  // Zapisanie danych formularza w localStorage
+  localStorage.setItem("startTrip", startTrip);
+  localStorage.setItem("numberOfKilometers", numberOfKilometers);
+  localStorage.setItem("numberOfPersons", numberOfPersons);
+  localStorage.setItem("accomodation", accomodation);
 
-        // Przekierowanie do strony podziękowania
-        window.location.href = "thankyou.html";
-      }
-    </script>
-    <script>
+  localStorage.setItem("name", name);
+  localStorage.setItem("email", email);
+  localStorage.setItem("color", color);
+  localStorage.setItem("animal", animal);
+  
+  //przekierowanie do strony z podziekowaniem
+  window.location.href = "thankyou.html";
+}
+
       // zablokowanie wyboru daty wcześniejszej niż dzisiejsza
       const dateInput = document.getElementById("startTrip");
 
