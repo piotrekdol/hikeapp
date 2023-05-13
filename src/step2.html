@@ -159,8 +159,71 @@
       </div>
     </footer>
 
-    <script src="config.js"></script>
     <script>
+
+
+const valid = document.getElementById("formSecondStep");
+
+valid.addEventListener("submit", function (event) {
+  const startTripInput = document.getElementById("startTrip");
+  const numberOfKilometersInput = document.getElementById("numberOfKilometers");
+  const accomodationInput = document.getElementById("accomodation");
+  const numberOfPersonsInput = document.getElementById("numberOfPersons");
+  const nameInput = document.getElementById("name");
+  const emailInput = document.getElementById("email");
+  const colorInput = document.getElementById("color");
+  const animalInput = document.getElementById("animal");
+  
+
+  if (startTripInput.value === "") {
+    alert("Please choose your destination country");
+    startTripInput.style.borderColor = "red";
+    event.preventDefault();
+  }
+
+  if (numberOfKilometersInput.value === "") {
+    alert("Please choose terrain type");
+    numberOfKilometersInput.style.borderColor = "red";
+    event.preventDefault();
+  }
+
+  if (accomodationInput.value === "") {
+    alert("Please choose your accomodation");
+    accomodationInput.style.borderColor = "red";
+    event.preventDefault();
+  }
+
+  if (numberOfPersonsInput.value === "") {
+    alert("Please choose number of persons");
+    numberOfPersonsInput.style.borderColor = "red";
+    event.preventDefault();
+  }
+
+  if (nameInput.value === "") {
+    alert("Please type your name");
+    nameInput.style.borderColor = "red";
+    event.preventDefault();
+  }
+
+  if (emailInput.value === "") {
+    alert("Please type your email addres");
+    emailInput.style.borderColor = "red";
+    event.preventDefault();
+  }
+
+  if (colorInput.value === "") {
+    alert("Choose your color");
+    colorInput.style.borderColor = "red";
+    event.preventDefault();
+  }
+
+  if (animalInput.value === "") {
+    alert("Choose your animal");
+    animalInput.style.borderColor = "red";
+    event.preventDefault();
+  }
+});
+
       //pobieram dane z local storage
       const country = localStorage.getItem("country");
       const terrainType = localStorage.getItem("terrainType");
