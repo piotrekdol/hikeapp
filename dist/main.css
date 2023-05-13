@@ -648,6 +648,15 @@ body .thankyoucntr h2 {
   color: #333333;
   margin: 0;
 }
+body .thankyoucntr .thankyoutxt {
+  display: flex;
+  flex-direction: column;
+}
+@media only screen and (max-width: 767px) {
+  body .thankyoucntr .thankyoutxt {
+    text-align: center;
+  }
+}
 body .thankyoucntr .thankyouimg {
   background-image: url(c3e200ab9d8aec661c6d.png);
   width: 354px;

@@ -27,7 +27,6 @@ __webpack_require__.r(__webpack_exports__);
 /* SPRAWDZANIE LOKALIZACJI UŻYTKOWNIKA */
 /* KLUCZ API POGODA Z RAPIDAPI */
 
-var url = 'https://weatherapi-com.p.rapidapi.com/current.json?q=53.1%2C-0.13';
 var options = {
   method: "GET",
   headers: {
