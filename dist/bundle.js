@@ -2,17 +2,6 @@
 /******/ 	var __webpack_modules__ = ([
 /* 0 */,
 /* 1 */
-/***/ ((module) => {
-
-function sum(a, b) {
-  return a + b;
-}
-module.exports = {
-  sum: sum
-};
-
-/***/ }),
-/* 2 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -21,7 +10,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /***/ }),
-/* 3 */
+/* 2 */
 /***/ ((module) => {
 
 /* SPRAWDZANIE LOKALIZACJI UŻYTKOWNIKA */
@@ -204,14 +193,14 @@ var __webpack_exports__ = {};
 (() => {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _css_style_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
+/* harmony import */ var _css_style_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
 /* STANDARDOWO WITAMY SIĘ ZE ŚWIATEM */
-console.log("Hello World");
+// console.log("Hello World");
 
 /* SPRAWDZAMY CZY ZACZYTUJE SIĘ PLIK SUM.JS, CZY WYKONUJE SIĘ FUNKCJA SUM*/
-var sum = (__webpack_require__(1).sum);
-console.log("Hello World");
-console.log(sum(22, 31));
+// const sum = require('./sum').sum;
+// console.log("Hello World");
+// console.log(sum(22,31));
 
 /* WYŚWIETLENIE TYTUŁY H1 W DIVIE ID DEMO */
 // let heading = document.querySelector("#demo");
@@ -231,7 +220,7 @@ console.log(sum(22, 31));
 // document.querySelector(".almaj").classList.add("change");
 
 /* PODPINAM MODUŁ POGODY */
-var localizeAndHide = (__webpack_require__(3).localizeAndHide);
+var localizeAndHide = (__webpack_require__(2).localizeAndHide);
 
 /* PRZYCISK DO LOKALIZACJI POGODY, KLIKNIĘCIE UKRYWA DOMYŚLNĄ POGODĘ DLA WARSZAWY 
 I W JEJ MIEJSCE WYŚWIETLA POGODĘ W LOKALIZACJI UŻYTKOWNIKA*/

@@ -1,10 +1,10 @@
 /* STANDARDOWO WITAMY SIĘ ZE ŚWIATEM */
-console.log("Hello World");
+// console.log("Hello World");
 
 /* SPRAWDZAMY CZY ZACZYTUJE SIĘ PLIK SUM.JS, CZY WYKONUJE SIĘ FUNKCJA SUM*/
-const sum = require('./sum').sum;
-console.log("Hello World");
-console.log(sum(22,31));
+// const sum = require('./sum').sum;
+// console.log("Hello World");
+// console.log(sum(22,31));
 
 /* WYŚWIETLENIE TYTUŁY H1 W DIVIE ID DEMO */
 // let heading = document.querySelector("#demo");
